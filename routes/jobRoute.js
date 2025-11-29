@@ -14,7 +14,7 @@ jobRouter.get(
 // Route to GET one job posting by Job Posting ID
 jobRouter.get(
     "/:job_id",
-    jobValidator.jobPostingIdRulesIdRules(),
+    jobValidator.jobPostingIdRules(),
     jobController.getJobPostingById
 )
 
@@ -28,22 +28,22 @@ jobRouter.get(
 // Route to POST the creation of a new job posting
 jobRouter.post(
     "/new",
-    jobValidator.jobPostingCreationRulesCreationRules(),
+    jobValidator.jobPostingCreationRules(),
     jobController.createJobPosting
 )
 
 // Route to PUT an update to a job posting by ID
 jobRouter.put(
     "/:job_id",
-    jobValidator.jobPostingIdRulesIdRules(),
-    jobValidator.jobPostingUpdateRulesUpdateRules(),
+    jobValidator.jobPostingIdRules(),
+    jobValidator.jobPostingUpdateRules(),
     jobController.updateJobPosting
 )
 
 // Route to DELETE a job posting by ID
 jobRouter.delete(
     "/:job_id",
-    jobValidator.jobPostingIdRulesIdRules(),
+    jobValidator.jobPostingIdRules(),
     jobController.deleteJobPosting
 )
 
