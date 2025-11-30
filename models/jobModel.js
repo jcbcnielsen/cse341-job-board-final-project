@@ -9,7 +9,19 @@ jobModel.getJobPostingById = async function (job_id) {}
 
 jobModel.getJobPostingsByCompanyId = async function (com_id) {}
 
-jobModel.createJobPosting = async function () {}
+jobModel.createJobPosting = async function (job_doc) {
+    // Convert the company_id string into an ObjectId
+    job_doc.company_id = new ObjectId(job_doc.company_id);
+
+    // Insert the document into the collection
+    const result = await collect.insertOne(job_doc);
+
+    // Return the status of the operation
+    if (result.acknowledged)
+        return [200, "Job Posting Created"];
+    else
+        return [500, "Database Error"];
+}
 
 jobModel.updateJobPosting = async function (job_id) {}
 

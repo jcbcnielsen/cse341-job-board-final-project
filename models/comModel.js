@@ -7,7 +7,16 @@ comModel.getAllCompanies = async function () {}
 
 comModel.getCompanyById = async function (com_id) {}
 
-comModel.createCompany = async function () {}
+comModel.createCompany = async function (com_doc) {
+    // Insert the document into the collection
+    const result = await collect.insertOne(com_doc);
+
+    // Return the status of the operation
+    if (result.acknowledged)
+        return [200, "Company Created"];
+    else
+        return [500, "Database Error"];
+}
 
 comModel.updateCompany = async function (com_id) {}
 
