@@ -5,10 +5,10 @@
     "description": "",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-job-board-final-project.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/com/all": {
