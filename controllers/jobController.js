@@ -2,11 +2,47 @@ const { validationResult } = require("express-validator");
 const jobModel = require("../models/jobModel");
 const jobController = {};
 
-jobController.getAllJobPostings = async function (req, res) {}
+//----------------------------------------------------------//
+// GET all job postings
+jobController.getAllJobPostings = async function (req, res) {
+  try {
+    const result = await jobModel.getAllJobPostings();
+    res.status(result[0]).send(result[1]);
+  } catch (error) {
+    res.status(500).send(error.message || error);
+  }
+};
 
-jobController.getJobPostingById = async function (req, res) {}
+// GET one job posting by ID
+jobController.getJobPostingById = async function (req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new Error(errors.toString());
+    }
 
-jobController.getJobPostingsByCompanyId = async function (req, res) {}
+    const result = await jobModel.getJobPostingById(req.params.job_id);
+    res.status(result[0]).send(result[1]);
+  } catch (error) {
+    res.status(400).send(error.message || error);
+  }
+};
+
+// GET job postings by Company ID
+jobController.getJobPostingsByCompanyId = async function (req, res) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw new Error(errors.toString());
+    }
+
+    const result = await jobModel.getJobPostingsByCompanyId(req.params.com_id);
+    res.status(result[0]).send(result[1]);
+  } catch (error) {
+    res.status(400).send(error.message || error);
+  }
+};
+//------------------------------------------------------------------//
 
 jobController.createJobPosting = async function (req, res) {
     try {
@@ -40,8 +76,26 @@ jobController.createJobPosting = async function (req, res) {
         res.status(400).send(error);
     }
 }
+//--------------------------------------------------------------------------//
+jobController.updateJobPosting = async function (req, res) {
+    try {
+        // Check for validation errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            throw new Error(errors.toString());
+        }
 
-jobController.updateJobPosting = async function (req, res) {}
+        // Send id and update data to the model
+        const result = await jobModel.updateJobPosting(req.params.job_id, req.body);
+
+        // Deliver result to the user
+        res.status(result[0]).send(result[1]);
+
+    } catch (error) {
+        res.status(400).send(error.message || error);
+    }
+};
+//-------------------------------------------------------------------------//
 
 jobController.deleteJobPosting = async function (req, res) {
     try {

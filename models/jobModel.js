@@ -3,11 +3,40 @@ const database = client.db("");
 const collect = database.collection("job_postings");
 const jobModel = {};
 
-jobModel.getAllJobPostings = async function () {}
+//----------------------------------------------------------//
+// GET all job postings
+jobModel.getAllJobPostings = async function () {
+  try {
+    const jobs = await collect.find().toArray();
+    return [200, jobs];
+  } catch (err) {
+    return [500, "Database Error"];
+  }
+};
 
-jobModel.getJobPostingById = async function (job_id) {}
+// GET one job posting by ID
+jobModel.getJobPostingById = async function (job_id) {
+  try {
+    const jid = new ObjectId(job_id);
+    const job = await collect.findOne({ _id: jid });
+    if (!job) return [404, "No Job Posting with that ID"];
+    return [200, job];
+  } catch (err) {
+    return [500, "Database Error"];
+  }
+};
 
-jobModel.getJobPostingsByCompanyId = async function (com_id) {}
+// GET job postings by Company ID
+jobModel.getJobPostingsByCompanyId = async function (com_id) {
+  try {
+    const cid = new ObjectId(com_id);
+    const jobs = await collect.find({ company_id: cid }).toArray();
+    return [200, jobs];
+  } catch (err) {
+    return [500, "Database Error"];
+  }
+};
+//----------------------------------------------------------------//
 
 jobModel.createJobPosting = async function (job_doc) {
     // Convert the company_id string into an ObjectId
@@ -22,8 +51,28 @@ jobModel.createJobPosting = async function (job_doc) {
     else
         return [500, "Database Error"];
 }
+//--------------------------------------------------------// 
 
-jobModel.updateJobPosting = async function (job_id) {}
+jobModel.updateJobPosting = async function (job_id, job_doc) {
+    // Convert the job_id string into an ObjectId
+    const jid = new ObjectId(job_id);
+
+    // Update the document in the collection
+    const result = await collect.updateOne(
+        { _id: jid },
+        { $set: job_doc }
+    );
+
+    // Return the status of the operation
+    if (result.acknowledged && result.matchedCount) {
+        return [200, "Job Posting Updated"];
+    } else if (result.acknowledged) {
+        return [404, "No Job Posting with that ID to Update"];
+    } else {
+        return [500, "Database Error"];
+    }
+};
+//-------------------------------------------------------//
 
 jobModel.deleteJobPosting = async function (job_id) {
     // Convert the job_id string into an ObjectId
