@@ -216,7 +216,7 @@
                   "example": "Help customers with creating appointments and paying for services"
                 },
                 "company_id": {
-                  "example": ""
+                  "example": "692e1d6aee6206d4a488d350"
                 },
                 "location": {
                   "example": "Denver, Colorado"
@@ -328,7 +328,7 @@
                   "example": "Help customers with creating appointments and paying for services"
                 },
                 "company_id": {
-                  "example": ""
+                  "example": "692e1d6aee6206d4a488d350"
                 },
                 "location": {
                   "example": "Denver, Colorado"
