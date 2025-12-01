@@ -1,0 +1,372 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "REST API",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/com/all": {
+      "get": {
+        "description": "Get all company data",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/com/{com_id}": {
+      "get": {
+        "description": "Get one companies' data by ID",
+        "parameters": [
+          {
+            "name": "com_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update one companies' data by ID",
+        "parameters": [
+          {
+            "name": "com_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Alex Auto Garage"
+                },
+                "address": {
+                  "example": "1234 Address Road, Denver, Colorado"
+                },
+                "type": {
+                  "example": "Auto Repair Shop"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one companies' data by ID",
+        "parameters": [
+          {
+            "name": "com_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/com/new": {
+      "post": {
+        "description": "Create new company data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Alex Auto Garage"
+                },
+                "address": {
+                  "example": "1234 Address Road, Denver, Colorado"
+                },
+                "type": {
+                  "example": "Auto Repair Shop"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/jobs/all": {
+      "get": {
+        "description": "Get all job postings data",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/jobs/{job_id}": {
+      "get": {
+        "description": "Get one job posting's data by ID",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update one job posting's data by ID",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Front Desk Attendant"
+                },
+                "description": {
+                  "example": "Help customers with creating appointments and paying for services"
+                },
+                "company_id": {
+                  "example": ""
+                },
+                "location": {
+                  "example": "Denver, Colorado"
+                },
+                "posted_date": {
+                  "example": "2025-10-06"
+                },
+                "salary_range": {
+                  "example": {
+                    "min": 18.37,
+                    "max": 21.84
+                  }
+                },
+                "employment_type": {
+                  "example": "Full-Time Hourly"
+                },
+                "requirements": {
+                  "example": [
+                    "Outgoing personality",
+                    "Able to work weekends"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one job posting's data by ID",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/jobs/com/{com_id}": {
+      "get": {
+        "description": "Get the data for all the job postings from one company by the company ID",
+        "parameters": [
+          {
+            "name": "com_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/jobs/new": {
+      "post": {
+        "description": "Create new job posting data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Front Desk Attendant"
+                },
+                "description": {
+                  "example": "Help customers with creating appointments and paying for services"
+                },
+                "company_id": {
+                  "example": ""
+                },
+                "location": {
+                  "example": "Denver, Colorado"
+                },
+                "posted_date": {
+                  "example": "2025-10-06"
+                },
+                "salary_range": {
+                  "example": {
+                    "min": 18.37,
+                    "max": 21.84
+                  }
+                },
+                "employment_type": {
+                  "example": "Full-Time Hourly"
+                },
+                "requirements": {
+                  "example": [
+                    "Outgoing personality",
+                    "Able to work weekends"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

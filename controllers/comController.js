@@ -37,15 +37,8 @@ comController.createCompany = async function (req, res) {
             throw new Error(errors.toString());
         }
 
-        // Create the document object to send to the model
-        const com_doc = {
-            name: req.body.name,
-            address: req.body.address,
-            type: req.body.type
-        };
-
         // Send the document to the model for database interaction
-        const result = await comModel.createCompany(com_doc);
+        const result = await comModel.createCompany(req.body);
 
         // Deliver result to the user
         res.status(result[0]).send(result[1]);

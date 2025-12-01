@@ -85,7 +85,7 @@ jobModel.deleteJobPosting = async function (job_id) {
     if (result.acknowledged && result.deletedCount)
         return [200, "Job Posting Deleted"];
     else if (result.acknowledged)
-        return [400, "No Job Posting with that ID to Delete"];
+        return [404, "No Job Posting with that ID to Delete"];
     else
         return [500, "Database Error"];
 }

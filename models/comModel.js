@@ -70,7 +70,7 @@ comModel.deleteCompany = async function (com_id) {
     if (result.acknowledged && result.deletedCount)
         return [200, "Company Deleted"];
     else if (result.acknowledged)
-        return [400, "No Company with that ID to Delete"];
+        return [404, "No Company with that ID to Delete"];
     else
         return [500, "Database Error"];
 }

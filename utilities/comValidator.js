@@ -4,7 +4,6 @@ const comValidator = {};
 comValidator.companyIdRules = function() {
     return [
         param("com_id")
-            .exists()
             .trim()
             .escape()
             .notEmpty()
@@ -16,21 +15,18 @@ comValidator.companyIdRules = function() {
 comValidator.companyCreationRules = function() {
     return [
         body("name")
-            .exists()
             .trim()
             .escape()
             .notEmpty()
             .isString()
             .withMessage("A name is required and must be a string."),
         body("address")
-            .exists()
             .trim()
             .escape()
             .notEmpty()
             .isString()
             .withMessage("An address is required and must be a string."),
         body("type")
-            .exists()
             .trim()
             .escape()
             .notEmpty()
@@ -39,6 +35,30 @@ comValidator.companyCreationRules = function() {
     ];
 }
 
-comValidator.companyUpdateRules = function() {}
+comValidator.companyUpdateRules = function() {
+    return [
+        body("name")
+            .optional({ values: null })
+            .trim()
+            .escape()
+            .notEmpty()
+            .isString()
+            .withMessage("Name must be a string."),
+        body("address")
+            .optional({ values: null })
+            .trim()
+            .escape()
+            .notEmpty()
+            .isString()
+            .withMessage("Address must be a string."),
+        body("type")
+            .optional({ values: null })
+            .trim()
+            .escape()
+            .notEmpty()
+            .isString()
+            .withMessage("Business type must be a string.")
+    ];
+}
 
 module.exports = comValidator;

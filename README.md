@@ -6,15 +6,15 @@
 - Node project created
 - POST endpoints for companies and job_postings collections completed with all neccessary error handling and validation
 - DELETE endpoints for companies and job_postings collections completed with any neccessary error handling and validation
+- Swagger Documentation complete and available at /api-docs
 
 ### Marco Tulio Salcedo
-
-### Unfinished
 - GET endpoints for companies and job_postings collections completed with any neccessary error handling and validation
 - PUT endpoints for companies and job_postings collections completed with all neccessary error handling and validation
 - MongoDB database set up and functional
+
+### Unfinished
 - Render deployment set up and functional
-- Swagger Documentation complete and available at /api-docs
 
 ## Week 06
 
