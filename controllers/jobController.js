@@ -9,7 +9,7 @@ jobController.getAllJobPostings = async function (req, res) {
     const result = await jobModel.getAllJobPostings();
     res.status(result[0]).send(result[1]);
   } catch (error) {
-    res.status(500).send(error.message || error);
+    res.status(500).send(error.message);
   }
 };
 
@@ -28,7 +28,7 @@ jobController.getJobPostingById = async function (req, res) {
     const result = await jobModel.getJobPostingById(req.params.job_id);
     res.status(result[0]).send(result[1]);
   } catch (error) {
-    res.status(400).send(error.message || error);
+    res.status(400).send(error.message);
   }
 };
 
@@ -47,7 +47,7 @@ jobController.getJobPostingsByCompanyId = async function (req, res) {
     const result = await jobModel.getJobPostingsByCompanyId(req.params.com_id);
     res.status(result[0]).send(result[1]);
   } catch (error) {
-    res.status(400).send(error.message || error);
+    res.status(400).send(error.message);
   }
 };
 //------------------------------------------------------------------//
@@ -77,7 +77,7 @@ jobController.createJobPosting = async function (req, res) {
         res.status(result[0]).send(result[1]);
         
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 }
 //--------------------------------------------------------------------------//
@@ -100,7 +100,7 @@ jobController.updateJobPosting = async function (req, res) {
         res.status(result[0]).send(result[1]);
 
     } catch (error) {
-        res.status(400).send(error.message || error);
+        res.status(400).send(error.message);
     }
 };
 //-------------------------------------------------------------------------//
