@@ -9,7 +9,7 @@ comController.getAllCompanies = async function (req, res) {
     const result = await comModel.getAllCompanies();
     res.status(result[0]).send(result[1]);
   } catch (error) {
-    res.status(500).send(error.message || error);
+    res.status(500).send(error.message);
   }
 };
 
@@ -28,7 +28,7 @@ comController.getCompanyById = async function (req, res) {
     const result = await comModel.getCompanyById(req.params.com_id);
     res.status(result[0]).send(result[1]);
   } catch (error) {
-    res.status(400).send(error.message || error);
+    res.status(400).send(error.message);
   }
 };
 //---------------------------------------------------------------//
@@ -52,7 +52,7 @@ comController.createCompany = async function (req, res) {
         res.status(result[0]).send(result[1]);
 
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 }
 //-----------------------------------------------------------//
@@ -75,7 +75,7 @@ comController.updateCompany = async function (req, res) {
         res.status(result[0]).send(result[1]);
 
     } catch (error) {
-        res.status(400).send(error.message || error);
+        res.status(400).send(error.message);
     }
 };
 //--------------------------------------------------------------//
@@ -98,7 +98,7 @@ comController.deleteCompany = async function (req, res) {
         res.status(result[0]).send(result[1]);
         
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 }
 
