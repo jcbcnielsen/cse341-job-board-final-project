@@ -18,7 +18,11 @@ jobController.getJobPostingById = async function (req, res) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      throw new Error(errors.toString());
+        let errorString = "";
+        errors.array().forEach((err) => {
+            errorString += `${err.msg} `;
+        });
+        throw new Error(errorString);
     }
 
     const result = await jobModel.getJobPostingById(req.params.job_id);
@@ -33,7 +37,11 @@ jobController.getJobPostingsByCompanyId = async function (req, res) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      throw new Error(errors.toString());
+        let errorString = "";
+        errors.array().forEach((err) => {
+            errorString += `${err.msg} `;
+        });
+        throw new Error(errorString);
     }
 
     const result = await jobModel.getJobPostingsByCompanyId(req.params.com_id);
@@ -49,7 +57,11 @@ jobController.createJobPosting = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Ensure the request body contains a posted_date
@@ -74,7 +86,11 @@ jobController.updateJobPosting = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Send id and update data to the model
@@ -94,7 +110,11 @@ jobController.deleteJobPosting = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Send id to the model for database interaction
@@ -104,7 +124,7 @@ jobController.deleteJobPosting = async function (req, res) {
         res.status(result[0]).send(result[1]);
         
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error.message);
     }
 }
 

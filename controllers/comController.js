@@ -18,7 +18,11 @@ comController.getCompanyById = async function (req, res) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      throw new Error(errors.toString());
+        let errorString = "";
+        errors.array().forEach((err) => {
+            errorString += `${err.msg} `;
+        });
+        throw new Error(errorString);
     }
 
     const result = await comModel.getCompanyById(req.params.com_id);
@@ -34,7 +38,11 @@ comController.createCompany = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Send the document to the model for database interaction
@@ -53,7 +61,11 @@ comController.updateCompany = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Send id and update data to the model
@@ -72,7 +84,11 @@ comController.deleteCompany = async function (req, res) {
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            throw new Error(errors.toString());
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
         }
 
         // Send id to the model for database interaction
