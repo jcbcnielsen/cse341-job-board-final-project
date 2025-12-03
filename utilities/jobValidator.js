@@ -45,8 +45,7 @@ jobValidator.jobPostingCreationRules = function() {
             .notEmpty()
             .isString()
             .isISO8601()
-            .withMessage(`Dates must be strings in ISO 8601 "YYYY-MM-DD" format.
-                If a date is not included, the submission time will be used as the posted date.`),
+            .withMessage(`Dates must be strings in ISO 8601 "YYYY-MM-DD" format. If a date is not included, the submission time will be used as the posted date.`),
         body("salary_range")
             .isObject()
             .withMessage("A salary range is required and must be a JavaScript Object."),
@@ -69,9 +68,7 @@ jobValidator.jobPostingCreationRules = function() {
                     || value == "Seasonal"
                     || value == "Internship");
             })
-            .withMessage(`An employment type is required and must be either
-                "Part-Time Hourly" "Full-Time Hourly" "Full-Time Salaried"
-                "Temporary" "Seasonal" or "Internship"`),
+            .withMessage(`An employment type is required and must be either "Part-Time Hourly" "Full-Time Hourly" "Full-Time Salaried" "Temporary" "Seasonal" or "Internship"`),
         body("requirements")
             .isArray({ min: 1 })
             .withMessage("A list of requirements is required."),
@@ -148,8 +145,7 @@ jobValidator.jobPostingUpdateRules = function() {
                     || value == "Seasonal"
                     || value == "Internship");
             })
-            .withMessage(`Employment type must be either "Part-Time Hourly" "Full-Time Hourly" 
-                "Full-Time Salaried" "Temporary" "Seasonal" or "Internship"`),
+            .withMessage(`Employment type must be either "Part-Time Hourly" "Full-Time Hourly" "Full-Time Salaried" "Temporary" "Seasonal" or "Internship"`),
         body("requirements")
             .optional({ values: null })
             .isArray({ min: 1 })
