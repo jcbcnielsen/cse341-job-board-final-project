@@ -8,8 +8,8 @@ const bodyParser = require("body-parser");
 const { auth } = require("express-openid-connect");
 const comRoute = require("./routes/comRoute");
 const jobRoute = require("./routes/jobRoute");
-// const workRoute = require("./routes/workRoute");
-// const appRoute = require("./routes/appRoute");
+const workRoute = require("./routes/workRoute");
+const appRoute = require("./routes/appRoute");
 const swaggerUI = require("swagger-ui-express");
 const swaggerDoc = require("./api-docs/swagger.json");
 
@@ -51,10 +51,10 @@ app.use("/com", comRoute);
 app.use("/jobs", jobRoute);
 
 // Workers API route
-// app.use("/work", workRoute);
+app.use("/work", workRoute);
 
 // Job Applications API route
-// app.use("/app", appRoute);
+app.use("/app", appRoute);
 
 // Documentation route
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
