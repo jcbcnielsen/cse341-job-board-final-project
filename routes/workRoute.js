@@ -7,7 +7,7 @@ const workController = require("../controllers/workController");
 // Route to GET all workers
 workRouter.get(
     "/all",
-    appController.getAllWorkers
+    workController.getAllWorkers
 );
 
 // Route to GET a worker by ID
@@ -20,13 +20,15 @@ workRouter.get(
 // Route to POST a new worker
 workRouter.post(
     "/new",
+    requiresAuth(),
     workValidator.workerCreationRules(),
-    appController.createWorker
+    workController.createWorker
 );
 
 // Route to PUT an update to a worker
 workRouter.put(
     "/:work_id",
+    requiresAuth(),
     workValidator.workerIdRules(),
     workValidator.workerUpdateRules(),
     workController.updateWorker
@@ -35,6 +37,7 @@ workRouter.put(
 // Route to DELETE a worker
 workRouter.delete(
     "/:work_id",
+    requiresAuth(),
     workValidator.workerIdRules(),
     workController.deleteWorker
 );

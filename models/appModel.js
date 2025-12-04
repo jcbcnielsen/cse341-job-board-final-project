@@ -72,9 +72,41 @@ appModel.createApplication = async function (app_doc) {
     else
         return [500, "Database Error."];
 }
+//-------------------------------------------------------------------//
+appModel.updateApplication = async function (app_id, app_doc) {
+    try {
+        const aid = new ObjectId(app_id);
+        const result = await collect.updateOne({ _id: aid }, { $set: app_doc });
 
-appModel.updateApplication = async function (app_id, app_doc) {}
+        if (result.acknowledged && result.matchedCount) {
+            return [200, "Application Updated"];
+        } else if (result.acknowledged) {
+            return [404, "No Application with that ID to Update"];
+        } else {
+            return [500, "Database Error"];
+        }
+    } catch (error) {
+        return [500, "Database Error"];
+    }
+};
 
-appModel.deleteApplication = async function (app_id) {}
+
+appModel.deleteApplication = async function (app_id) {
+    try {
+        const aid = new ObjectId(app_id);
+        const result = await collect.deleteOne({ _id: aid });
+
+        if (result.acknowledged && result.deletedCount) {
+            return [200, "Application Deleted"];
+        } else if (result.acknowledged) {
+            return [404, "No Application with that ID to Delete"];
+        } else {
+            return [500, "Database Error"];
+        }
+    } catch (error) {
+        return [500, "Database Error"];
+    }
+};
+//-----------------------------------------------------------------//
 
 module.exports = appModel;

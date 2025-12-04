@@ -109,9 +109,43 @@ appController.createApplication = async function (req, res) {
             res.status(400).send(error.message);
         }
 }
+//--------------------------------------------------------------------------//
+appController.updateApplication = async function (req, res) {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
+        }
 
-appController.updateApplication = async function (req, res) {}
+        const result = await appModel.updateApplication(req.params.app_id, req.body);
+        res.status(result[0]).send(result[1]);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
 
-appController.deleteApplication = async function (req, res) {}
+
+appController.deleteApplication = async function (req, res) {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
+        }
+
+        const result = await appModel.deleteApplication(req.params.app_id);
+        res.status(result[0]).send(result[1]);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+//------------------------------------------------------------------------------//
 
 module.exports = appController;

@@ -36,6 +36,7 @@ appRouter.get(
 // Route to POST a new job application
 appRouter.post(
     "/new",
+    requiresAuth(),
     appValidator.applicationCreationRules(),
     appController.createApplication
 );
@@ -43,6 +44,7 @@ appRouter.post(
 // Route to PUT an update to a job application
 appRouter.put(
     "/:app_id",
+    requiresAuth(),
     appValidator.applicationIdRules(),
     appValidator.applicationUpdateRules(),
     appController.updateApplication
@@ -51,6 +53,7 @@ appRouter.put(
 // Route to DELETE a job application
 appRouter.delete(
     "/:app_id",
+    requiresAuth(),
     appValidator.applicationIdRules(),
     appController.deleteApplication
 );

@@ -40,9 +40,41 @@ workModel.createWorker = async function (work_doc) {
     else
         return [500, "Database Error."];
 }
+//----------------------------------------------------------------------//
+workModel.updateWorker = async function (work_id, work_doc) {
+    try {
+        const wid = new ObjectId(work_id);
+        const result = await collect.updateOne({ _id: wid }, { $set: work_doc });
 
-workModel.updateWorker = async function (work_id, work_doc) {}
+        if (result.acknowledged && result.matchedCount) {
+            return [200, "Worker Updated"];
+        } else if (result.acknowledged) {
+            return [404, "No Worker with that ID to Update"];
+        } else {
+            return [500, "Database Error"];
+        }
+    } catch (error) {
+        return [500, "Database Error"];
+    }
+};
 
-workModel.deleteWorker = async function (work_id) {}
+
+workModel.deleteWorker = async function (work_id) {
+    try {
+        const wid = new ObjectId(work_id);
+        const result = await collect.deleteOne({ _id: wid });
+
+        if (result.acknowledged && result.deletedCount) {
+            return [200, "Worker Deleted"];
+        } else if (result.acknowledged) {
+            return [404, "No Worker with that ID to Delete"];
+        } else {
+            return [500, "Database Error"];
+        }
+    } catch (error) {
+        return [500, "Database Error"];
+    }
+};
+//----------------------------------------------------------------------//
 
 module.exports = workModel;

@@ -58,9 +58,43 @@ workController.createWorker = async function (req, res) {
         res.status(400).send(error.message);
     }
 }
+//------------------------------------------------------------------//
+workController.updateWorker = async function (req, res) {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
+        }
 
-workController.updateWorker = async function (req, res) {}
+        const result = await workModel.updateWorker(req.params.work_id, req.body);
+        res.status(result[0]).send(result[1]);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
 
-workController.deleteWorker = async function (req, res) {}
+
+workController.deleteWorker = async function (req, res) {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            let errorString = "";
+            errors.array().forEach((err) => {
+                errorString += `${err.msg} `;
+            });
+            throw new Error(errorString);
+        }
+
+        const result = await workModel.deleteWorker(req.params.work_id);
+        res.status(result[0]).send(result[1]);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+//---------------------------------------------------------------------//
 
 module.exports = workController;
