@@ -14,21 +14,17 @@
 - PUT endpoints for companies and job_postings collections completed with all neccessary error handling and validation
 - MongoDB database set up and functional
 
-### Unfinished
-
 ## Week 06
 
 ### Jacob Nielsen
-
-### Marco Tulio Salcedo
-
-### Unfinished
 - GET endpoints for workers and applications collections completed with any neccessary error handling and validation
 - POST endpoints for workers and applications collections completed with all neccessary error handling and validation
+- Write at least four unit tests testing GET endpoints in each collection
+
+### Marco Tulio Salcedo
 - PUT endpoints for workers and applications collections completed with all neccessary error handling and validation
 - DELETE endpoints for workers and applications collections completed with any neccessary error handling and validation
 - Implement OAuth and secure at least two collections' POST and PUT endpoints behind authorization
-- Write at least four unit tests testing GET endpoints in each collection
 
 ## Week 07
 

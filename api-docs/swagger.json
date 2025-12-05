@@ -215,7 +215,7 @@
                 "description": {
                   "example": "Help customers with creating appointments and paying for services"
                 },
-                "company_id": {
+                "com_id": {
                   "example": "692e1d6aee6206d4a488d350"
                 },
                 "location": {
@@ -327,7 +327,7 @@
                 "description": {
                   "example": "Help customers with creating appointments and paying for services"
                 },
-                "company_id": {
+                "com_id": {
                   "example": "692e1d6aee6206d4a488d350"
                 },
                 "location": {
@@ -350,6 +350,354 @@
                     "Outgoing personality",
                     "Able to work weekends"
                   ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/work/all": {
+      "get": {
+        "description": "Get all workers data",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/work/{work_id}": {
+      "get": {
+        "description": "Get one worker's data by ID",
+        "parameters": [
+          {
+            "name": "work_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update one worker's data by ID",
+        "parameters": [
+          {
+            "name": "work_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "example": "John"
+                },
+                "last_name": {
+                  "example": "Doe"
+                },
+                "address": {
+                  "example": "5678 Home Street, Denver, Colorado"
+                },
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "phone": {
+                  "example": 5551234567
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one worker's data by ID",
+        "parameters": [
+          {
+            "name": "work_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/work/new": {
+      "post": {
+        "description": "Create new worker data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "example": "John"
+                },
+                "last_name": {
+                  "example": "Doe"
+                },
+                "address": {
+                  "example": "5678 Home Street, Denver, Colorado"
+                },
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "phone": {
+                  "example": 5551234567
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/app/all": {
+      "get": {
+        "description": "Get all job applications data",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/app/{app_id}": {
+      "get": {
+        "description": "Get one job application's data by ID",
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update one job application's data by ID",
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "work_id": {
+                  "example": "69330b2c062e423713cd315f"
+                },
+                "job_id": {
+                  "example": "69330a91062e423713cd315e"
+                },
+                "submitted_date": {
+                  "example": "2025-10-08"
+                },
+                "resume_filename": {
+                  "example": "doe-john.pdf"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete one job application's data by ID",
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/app/work/{work_id}": {
+      "get": {
+        "description": "Get the data for all the job applications from one worker by the worker ID",
+        "parameters": [
+          {
+            "name": "work_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/app/job/{job_id}": {
+      "get": {
+        "description": "Get the data for all the job applications for one job posting by the job posting ID",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/app/new": {
+      "post": {
+        "description": "Create new job application data",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "work_id": {
+                  "example": "69330b2c062e423713cd315f"
+                },
+                "job_id": {
+                  "example": "69330a91062e423713cd315e"
+                },
+                "submitted_date": {
+                  "example": "2025-10-08"
+                },
+                "resume_filename": {
+                  "example": "doe-john.pdf"
                 }
               }
             }

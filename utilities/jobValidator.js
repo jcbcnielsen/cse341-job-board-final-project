@@ -26,7 +26,7 @@ jobValidator.jobPostingCreationRules = function() {
             .notEmpty()
             .isString()
             .withMessage("A job description is required and must be a string."),
-        body("company_id")
+        body("com_id")
             .trim()
             .escape()
             .notEmpty()
@@ -97,7 +97,7 @@ jobValidator.jobPostingUpdateRules = function() {
             .notEmpty()
             .isString()
             .withMessage("Job description must be a string."),
-        body("company_id")
+        body("com_id")
             .optional({ values: null })
             .trim()
             .escape()

@@ -17,17 +17,21 @@ workModel.getAllWorkers = async function () {
 }
 
 workModel.getWorkerById = async function (work_id) {
-    // Convert the work_id string into an ObjectId
-    const wid = new ObjectId(work_id);
+    try {
+        // Convert the work_id string into an ObjectId
+        const wid = new ObjectId(work_id);
 
-    // Retrive the document from the database
-    const worker = await collect.findOne({ _id: wid });
+        // Retrive the document from the database
+        const worker = await collect.findOne({ _id: wid });
 
-    // Return the results of the operation
-    if (worker)
-        return [200, worker];
-    else
-        return [404, "No worker with that Id found."];
+        // Return the results of the operation
+        if (worker)
+            return [200, worker];
+        else
+            return [404, "No worker with that Id found."];
+    } catch (error) {
+        return [500, "Database Error"];
+    }
 }
 
 workModel.createWorker = async function (work_doc) {

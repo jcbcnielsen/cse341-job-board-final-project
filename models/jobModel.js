@@ -29,8 +29,7 @@ jobModel.getJobPostingById = async function (job_id) {
 // GET job postings by Company ID
 jobModel.getJobPostingsByCompanyId = async function (com_id) {
   try {
-    const cid = new ObjectId(com_id);
-    const jobs = await collect.find({ company_id: cid }).toArray();
+    const jobs = await collect.find({ com_id: com_id }).toArray();
     return [200, jobs];
   } catch (err) {
     return [500, "Database Error"];
@@ -39,9 +38,6 @@ jobModel.getJobPostingsByCompanyId = async function (com_id) {
 //----------------------------------------------------------------//
 
 jobModel.createJobPosting = async function (job_doc) {
-    // Convert the company_id string into an ObjectId
-    job_doc.company_id = new ObjectId(job_doc.company_id);
-
     // Insert the document into the collection
     const result = await collect.insertOne(job_doc);
 
