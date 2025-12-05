@@ -44,6 +44,39 @@ workValidator.workerCreationRules = function() {
     ];
 }
 
-workValidator.workerUpdateRules = function() {}
+//----------------------------------------------------------------------//
+workValidator.workerUpdateRules = function() {
+    return [
+        body("first_name")
+            .optional()
+            .trim()
+            .escape()
+            .isString()
+            .withMessage("First name must be a string."),
+        body("last_name")
+            .optional()
+            .trim()
+            .escape()
+            .isString()
+            .withMessage("Last name must be a string."),
+        body("address")
+            .optional()
+            .trim()
+            .escape()
+            .isString()
+            .withMessage("Address must be a string."),
+        body("email")
+            .optional()
+            .trim()
+            .escape()
+            .isEmail()
+            .withMessage("Email must be valid."),
+        body("phone")
+            .optional()
+            .isInt()
+            .withMessage("Phone number must be an integer.")
+    ];
+};
+//------------------------------------------------------------------------//
 
 module.exports = workValidator;
