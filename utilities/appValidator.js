@@ -43,7 +43,35 @@ appValidator.applicationCreationRules = function() {
             .withMessage(`A resume filename is required and must be a string using only alphanumeric characters and ending with either ".pdf" ".docx" ".doc" or ".odt"`)
     ];
 }
-
-appValidator.applicationUpdateRules = function() {}
-
+//-------------------------------------------------------------//
+appValidator.applicationUpdateRules = function() {
+    return [
+        body("work_id")
+            .optional()
+            .trim()
+            .escape()
+            .isMongoId()
+            .withMessage("work_id must be a valid MongoDB ObjectId."),
+        body("job_id")
+            .optional()
+            .trim()
+            .escape()
+            .isMongoId()
+            .withMessage("job_id must be a valid MongoDB ObjectId."),
+        body("submitted_date")
+            .optional()
+            .trim()
+            .escape()
+            .isISO8601()
+            .withMessage("submitted_date must be in ISO 8601 format."),
+        body("resume_filename")
+            .optional()
+            .trim()
+            .escape()
+            .isString()
+            .matches(/\w+\.(pdf|docx|doc|odt)$/)
+            .withMessage("resume_filename must end with '.pdf', '.docx', '.doc' or '.odt'.")
+    ];
+};
+//------------------------------------------------------------------------//
 module.exports = appValidator;
