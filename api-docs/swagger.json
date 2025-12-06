@@ -10,6 +10,27 @@
   "schemes": [
     "https"
   ],
+  
+  "tags": [
+    {
+      "name": "Companies",
+      "description": "Endpoints for managing company data"
+    },
+    {
+      "name": "Job Postings",
+      "description": "Endpoints for managing job listings"
+    },
+    {
+      "name": "Workers",
+      "description": "Endpoints for managing worker profiles"
+    },
+    {
+      "name": "Applications",
+      "description": "Endpoints for managing job applications"
+    }
+  ],
+
+
   "paths": {
     "/com/all": {
       "get": {
