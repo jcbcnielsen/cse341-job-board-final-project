@@ -30,12 +30,6 @@ const config = {
 // ------------------------------------------------
 // Routes
 
-//route to show welcome message
-app.get("/", (req, res) => {
-  res.send("Welcome to the Job Board API!");
-});
-
-
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 

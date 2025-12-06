@@ -10,7 +10,6 @@
   "schemes": [
     "https"
   ],
-  
   "tags": [
     {
       "name": "Companies",
@@ -29,12 +28,13 @@
       "description": "Endpoints for managing job applications"
     }
   ],
-
-
   "paths": {
     "/com/all": {
       "get": {
         "description": "Get all company data",
+        "tags": [
+          "Companies"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -48,6 +48,9 @@
     "/com/{com_id}": {
       "get": {
         "description": "Get one companies' data by ID",
+        "tags": [
+          "Companies"
+        ],
         "parameters": [
           {
             "name": "com_id",
@@ -73,6 +76,9 @@
       },
       "put": {
         "description": "Update one companies' data by ID",
+        "tags": [
+          "Companies"
+        ],
         "parameters": [
           {
             "name": "com_id",
@@ -116,6 +122,9 @@
       },
       "delete": {
         "description": "Delete one companies' data by ID",
+        "tags": [
+          "Companies"
+        ],
         "parameters": [
           {
             "name": "com_id",
@@ -143,6 +152,9 @@
     "/com/new": {
       "post": {
         "description": "Create new company data",
+        "tags": [
+          "Companies"
+        ],
         "parameters": [
           {
             "name": "body",
@@ -179,6 +191,9 @@
     "/jobs/all": {
       "get": {
         "description": "Get all job postings data",
+        "tags": [
+          "Job Postings"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -192,6 +207,9 @@
     "/jobs/{job_id}": {
       "get": {
         "description": "Get one job posting's data by ID",
+        "tags": [
+          "Job Postings"
+        ],
         "parameters": [
           {
             "name": "job_id",
@@ -217,6 +235,9 @@
       },
       "put": {
         "description": "Update one job posting's data by ID",
+        "tags": [
+          "Job Postings"
+        ],
         "parameters": [
           {
             "name": "job_id",
@@ -281,6 +302,9 @@
       },
       "delete": {
         "description": "Delete one job posting's data by ID",
+        "tags": [
+          "Job Postings"
+        ],
         "parameters": [
           {
             "name": "job_id",
@@ -308,6 +332,9 @@
     "/jobs/com/{com_id}": {
       "get": {
         "description": "Get the data for all the job postings from one company by the company ID",
+        "tags": [
+          "Job Postings"
+        ],
         "parameters": [
           {
             "name": "com_id",
@@ -335,6 +362,9 @@
     "/jobs/new": {
       "post": {
         "description": "Create new job posting data",
+        "tags": [
+          "Job Postings"
+        ],
         "parameters": [
           {
             "name": "body",
@@ -392,6 +422,9 @@
     "/work/all": {
       "get": {
         "description": "Get all workers data",
+        "tags": [
+          "Workers"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -405,6 +438,9 @@
     "/work/{work_id}": {
       "get": {
         "description": "Get one worker's data by ID",
+        "tags": [
+          "Workers"
+        ],
         "parameters": [
           {
             "name": "work_id",
@@ -430,6 +466,9 @@
       },
       "put": {
         "description": "Update one worker's data by ID",
+        "tags": [
+          "Workers"
+        ],
         "parameters": [
           {
             "name": "work_id",
@@ -473,6 +512,9 @@
       },
       "delete": {
         "description": "Delete one worker's data by ID",
+        "tags": [
+          "Workers"
+        ],
         "parameters": [
           {
             "name": "work_id",
@@ -494,6 +536,9 @@
     "/work/new": {
       "post": {
         "description": "Create new worker data",
+        "tags": [
+          "Workers"
+        ],
         "parameters": [
           {
             "name": "body",
@@ -536,6 +581,9 @@
     "/app/all": {
       "get": {
         "description": "Get all job applications data",
+        "tags": [
+          "Applications"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -549,6 +597,9 @@
     "/app/{app_id}": {
       "get": {
         "description": "Get one job application's data by ID",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "app_id",
@@ -574,6 +625,9 @@
       },
       "put": {
         "description": "Update one job application's data by ID",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "app_id",
@@ -620,6 +674,9 @@
       },
       "delete": {
         "description": "Delete one job application's data by ID",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "app_id",
@@ -647,6 +704,9 @@
     "/app/work/{work_id}": {
       "get": {
         "description": "Get the data for all the job applications from one worker by the worker ID",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "work_id",
@@ -674,6 +734,9 @@
     "/app/job/{job_id}": {
       "get": {
         "description": "Get the data for all the job applications for one job posting by the job posting ID",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "job_id",
@@ -701,6 +764,9 @@
     "/app/new": {
       "post": {
         "description": "Create new job application data",
+        "tags": [
+          "Applications"
+        ],
         "parameters": [
           {
             "name": "body",
