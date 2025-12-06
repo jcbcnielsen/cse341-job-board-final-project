@@ -40,9 +40,9 @@ app.get("/", (req, res) => {
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-}); */
+}); 
 
 // Companies API route
 app.use("/com", comRoute);
